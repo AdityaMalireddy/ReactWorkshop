@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -47,3 +48,6 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 # GDPReactWorskshop
 React Worskhop
 >>>>>>> 2e6149c0650490cb74ff03cc30ac91a4183f7586
+=======
+# ReactWorkshop
+>>>>>>> ddf237a8a6f3d09da027db9916bdea62a3c8874e
