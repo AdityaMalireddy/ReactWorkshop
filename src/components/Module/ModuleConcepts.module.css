@@ -1,0 +1,12 @@
+.Module {
+    border: 1px solid lightgray;
+    width: 90%;
+    margin: auto;
+    list-style: none;
+    border-left: 4px solid green; 
+    text-align: left;
+    padding: 7px 20px;
+    font-size: 0.83em;
+    text-decoration: underline;
+}
+

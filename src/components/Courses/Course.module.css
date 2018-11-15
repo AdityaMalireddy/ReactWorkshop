@@ -1,0 +1,20 @@
+.Course button{
+    padding: 0px 40px;
+    height: 30px;
+    text-align: center;
+    background: whitesmoke;
+    margin: 5px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    font-size: 0.81em;
+}
+
+.Course{
+    display: inline-block;
+}
+
+.Course :hover {
+    text-decoration: underline;
+    background: green;
+    color: whitesmoke;
+}

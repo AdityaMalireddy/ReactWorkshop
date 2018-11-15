@@ -1,0 +1,121 @@
+.App {
+  text-align: center;
+  width: 100%;
+  margin-bottom: 300px;
+}
+
+.image{
+  margin-top: 20px;
+}
+
+.image img{
+  width: 90%;
+  margin: auto;
+  height: 400px;
+}
+
+.App h1 {
+  text-align: left;
+  font-weight: 600;
+  color: gray;
+  margin: 10px 30px 10px 50px;
+  float: left;
+}
+
+.App button{
+  margin: 10px 70px 10px;
+  font-size: 1.3em;
+  border: 1px solid gray;
+  background: whitesmoke;
+  color: gray;
+  padding: 0px 10px;
+  height: 40px;
+  border-radius: 5px;
+  float: right;
+}
+
+.Course{
+  margin-top: 30px; 
+  margin-bottom: 100px;
+}
+
+.horizontal {
+  border-top: 1px solid lightgray;
+}
+
+.hrzl {
+  border-top: 1px solid lightgray;
+  width: 90%;
+  margin: auto;
+}
+
+.headerMain{
+  margin-top: 50px; 
+}
+
+.headerMain p{
+  display: inline-block;
+  font-size: 1.2em;
+  background: darkgreen;
+  color: whitesmoke;
+  padding: 10px 40px;
+  height: 30px;
+  text-align: center;
+  margin: 0px;
+}
+
+.headerMain :hover {
+  text-decoration: underline;
+  color: black;
+  background: whitesmoke;
+  border: 1px solid darkgreen;
+}
+
+.Module {
+  border: 1px solid lightgray;
+  width: 60%;
+  margin-left:auto;
+  margin-right: auto;
+  padding-bottom: 10px;
+}
+
+.About{
+  border: 1px solid lightgray;
+  width: 90%;
+  height: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 60px;
+}
+
+.moduleIntro {
+  border-bottom: 1px dotted lightgrey;
+  margin-bottom: 5px;
+  text-align: left;
+  padding: 0px 5px;
+}
+
+.moduleTutorial {
+  border: 1px solid lightgray;
+  width: 90%;
+  margin: auto;
+  list-style: none;
+  border-left: 4px solid green; 
+  text-align: left;
+  padding: 7px 20px;
+  font-size: 0.83em;
+  text-decoration: underline;
+}
+
+.dotted{
+  border-bottom: 1px dashed #A5AFB5;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
