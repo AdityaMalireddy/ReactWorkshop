@@ -1,10 +1,12 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
-In the project directory, you can run:
+* In the project directory, you can run:
+* Before running the project download the node.js package from https://nodejs.org/en/
+* After downloading install the node.js
+* Clone th project in your desktop and open the project using visual studio.
+* To run the application,open terminal in the visual studio and type "npm install" to install the React modules in the application.
 
 ### `npm start`
 
