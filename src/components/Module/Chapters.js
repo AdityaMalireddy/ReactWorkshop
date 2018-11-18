@@ -5,7 +5,7 @@ const Chapter = (props) => {
     return(
         <div>
             {props.concept.map((key, index) => {
-                return <li className={moduleCss.Module} key={index}>Concept {props.module}.{index}: {key}</li>
+                return <li className={moduleCss.Module} onClick={()=>props.onClick(key)}  key={index}>Concept {props.module}.{index}: {key}</li>
                 })
             }
         </div>

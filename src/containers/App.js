@@ -10,123 +10,76 @@ class App extends Component {
 
   state = {
     moduleContent: null,
+    subModuleContent: null,
     moduleActive: false,
     aboutActive: false,
     syllabusActive: false,
     calendarActive: false
   }
 
-  moduledFired = (moduleNo) => {
-
-    if(moduleNo === 1) {
-      let concepts = ['concept 1 in module 1','concept 2 in module 1']
-      let assignments = ['assignment 1 in module 1','assignment 2 in module 1']
-      this.setState({
-        moduleContent: 
-            <div className = {classes.Module}>
-              <h4 className = {classes.moduleIntro}> Module 0{moduleNo} -  <span>module 01 name</span></h4>
-              <div>
-                <p className = {classes.moduleTutorial}>Module 01 Tutorial</p>
-                <Chapter module={moduleNo} concept={concepts}/>
-                <Assignment assignments={assignments}/>
-              </div>
-            </div>
-      })
-    } else if(moduleNo === 2) {
-      let concepts = ['concept 1 in module 2','concept 2 in module 2']
-      let quizes = ['quiz 1 in module 2','quiz 2 in module 2']
-      let count = 2
-      this.setState({
-        moduleContent: 
-            <div className = {classes.Module}>
-              <h4 className = {classes.moduleIntro}> Module 0{moduleNo} -  <span>module 02 name</span></h4>
-              <div>
-                <p className = {classes.moduleTutorial}>Module 02 Tutorial</p>
-                <Chapter module={moduleNo} concept={concepts}/>
-                <Quiz quizes={quizes}/>
-                <InClassActivity inClassActivity={count}/>
-              </div>
-            </div>
-      })
-    }  else if(moduleNo === 3) {
-      let concepts = ['concept 1 in module 3','concept 2 in module 3']
-      let quizes = ['quiz 1 in module 3','quiz 2 in module 3']
-      let assignments = ['assignment 1 in module 3']
-      this.setState({
-        moduleContent: 
-            <div className = {classes.Module}>
-              <h4 className = {classes.moduleIntro}> Module 0{moduleNo} -  <span>module 03 name</span></h4>
-              <div>
-                <p className = {classes.moduleTutorial}>Module 03 Tutorial</p>
-                <Chapter module={moduleNo} concept={concepts}/>
-                <Assignment assignments={assignments}/>
-                <Quiz quizes={quizes}/>
-              </div>
-            </div>
-      })
-    } else if(moduleNo === 4) {
-      let concepts = ['concept 1 in module 4','concept 2 in module 4']
-      let assignments = ['assignment 1 in module 4']
-      let count = 2
-      this.setState({
-        moduleContent: 
-            <div className = {classes.Module}>
-              <h4 className = {classes.moduleIntro}> Module 0{moduleNo} -  <span>module 04 name</span></h4>
-              <div>
-                <p className = {classes.moduleTutorial}>Module 04 Tutorial</p>
-                <Chapter module={moduleNo} concept={concepts}/>
-                <Assignment assignments={assignments}/>
-                <InClassActivity inClassActivity={count}/>
-              </div>
-            </div>
-      })
-    } else if(moduleNo === 5) {
-      let concepts = ['concept 1 in module 5','concept 2 in module 5']
-      let count = 3
-      this.setState({
-        moduleContent: 
-            <div className = {classes.Module}>
-              <h4 className = {classes.moduleIntro}> Module 0{moduleNo} -  <span>module 05 name</span></h4>
-              <div>
-                <p className = {classes.moduleTutorial}>Module 05 Tutorial</p>
-                <Chapter module={moduleNo} concept={concepts}/>
-                <InClassActivity inClassActivity={count}/>
-              </div>
-            </div>
-      })
-    } else if(moduleNo === 6) {
-      let concepts = ['concept 1 in module 6','concept 2 in module 6']
-      let quizes = ['quiz 1 in module 6','quiz 2 in module 6']
-      this.setState({
-        moduleContent: 
-            <div className = {classes.Module}>
-              <h4 className = {classes.moduleIntro}> Module 0{moduleNo} -  <span>module 06 name</span></h4>
-              <div>
-                <p className = {classes.moduleTutorial}>Module 06 Tutorial</p>
-                <Chapter module={moduleNo} concept={concepts}/>
-                <Quiz quizes={quizes}/>
-              </div>
-            </div>
-      })
-    }else if(moduleNo === 7) {
-      let concepts = ['concept 1 in module 7','concept 2 in module 7']
-      let assignments = ['assignment 1 in module 7']
-      let quizes = ['quiz 1 in module 7','quiz 2 in module 7']
-      let count = 2
-      this.setState({
-        moduleContent: 
-            <div className = {classes.Module}>
-              <h4 className = {classes.moduleIntro}> Module 0{moduleNo} -  <span>module 07 name</span></h4>
-              <div>
-                <p className = {classes.moduleTutorial}>Module 07 Tutorial</p>
-                <Chapter module={moduleNo} concept={concepts}/>
-                <Assignment assignments={assignments}/>
-                <Quiz quizes={quizes}/>
-                <InClassActivity inClassActivity={count}/>
-              </div>
-            </div>
-      })
+  getContent(type, details){
+    switch(type){
+      case "Chapter":
+        return <React.Fragment>
+                  <a className={classes.Wrap} target="_blank" href="https://docs.google.com/document/d/1o8IfGltDSVTpqx93jQTRL8M1f9h95EBtL1Al5cDHPuw/edit">
+                      Chapter : {details} document
+                  </a>
+                  <iframe className={classes.IFrame} src="https://docs.google.com/document/d/e/2PACX-1vSlHCNpcBLNlx9CgZCiuS9c3OAn6-Ryk2JJwfODuWhVSuDUgh-qQdcSwOjqUVLIZ5zn6G3XbPxg54gF/pub?embedded=true"></iframe> 
+              </React.Fragment>
+      case "Quiz":
+        return <React.Fragment>
+              <ul>
+                <li>
+                 Quiz- Requires Respondus LockDown Browser
+               
+                </li>
+              </ul>
+          </React.Fragment>
+      case "Assignment":
+        return <React.Fragment>
+              <a className={classes.Wrap} target="_blank" href="https://docs.google.com/document/d/1vLgtoH-ZGgtAMLdOMCQ3E5NG0RQrf-J_BABOvyHmoAY/edit">
+              Assignment: {details} document
+              </a>
+              <iframe className={classes.IFrame} src="https://docs.google.com/document/d/e/2PACX-1vTVpRBjO5zFENCDq0tyvJi-2paHoxgAN2tetMqWDFO6YXloUv2LNLslvB_wHNPOhQ1bP9uxBZ8CLnO9/pub?embedded=true"></iframe>
+          </React.Fragment>
+      default:
+          return <p>No Content added!</p>
     }
+  }
+
+  subModuleFired = (moduleNo, type, details) =>{
+      console.log(moduleNo, type, details);
+      this.setState({subModuleContent: 
+                          <React.Fragment>
+                          <h1>{details}</h1>
+                          <div className={classes.Clear}></div>
+                          <div className={classes.Wrap}>
+                            {this.getContent(type, details)}
+                          </div>
+                          </React.Fragment>
+       });
+  }
+
+  moduledFired = (moduleNo) => {
+      let concepts = [`Concept 1 in Module ${moduleNo}`,`Concept 2 in Module ${moduleNo}`]
+      let assignments = [`Assignment 1 in Module ${moduleNo}`,`Assignment 2 in Module ${moduleNo}`]
+      let quizes = [];
+      if(moduleNo == 2 || moduleNo == 4 || moduleNo == 6 )
+        quizes = [`Quiz 1 in Module ${moduleNo}`,`Quiz 2 in Module ${moduleNo}`]
+      this.setState({
+        moduleContent: 
+        
+            <div className = {classes.Module}>
+              <h4 className = {classes.moduleIntro} > Module 0{moduleNo} -  <span>module 0{moduleNo} name</span></h4>
+              <div>
+                <p className = {classes.moduleTutorial} onClick={()=>this.subModuleFired.bind(this, moduleNo, "Chapter")(`Module 0${moduleNo} Tutorial`)}>Module 0{moduleNo} Tutorial</p>
+                <Chapter module={moduleNo} onClick={this.subModuleFired.bind(this, moduleNo, "Chapter")} concept={concepts}/>
+                {quizes.length > 0 && <Quiz quizes={quizes} onClick={this.subModuleFired.bind(this, moduleNo, "Quiz")}/> }
+                <Assignment assignments={assignments} onClick={this.subModuleFired.bind(this, moduleNo, "Assignment")}/>
+              </div>
+            </div>,
+          subModuleContent: null
+      })
   }
 
   activeModuleState = () => {
@@ -203,7 +156,7 @@ class App extends Component {
     if(this.state.aboutActive){
       mainAboutContent = (
         <div className = {classes.About}>
-          About the course goes here
+          About course goes here
         </div>
       )
     }
@@ -212,7 +165,11 @@ class App extends Component {
     if(this.state.syllabusActive){
       mainSyllabusContent = (
         <div className={classes.About}>
-          Syllabus page goes here
+          
+          <h3>Course Syllabus</h3><br/>
+          <a className={classes.Wrap} target="_blank" href="https://docs.google.com/document/d/1PQpyMhRxcAaYvTM-NX6vqSW_KjKP1n1au3bDrDR2VAs/edit">
+         </a>
+         <iframe className={classes.IFrame} src="https://docs.google.com/document/d/e/2PACX-1vTo-C3YbAZuUf0pbMkF9-pWVyJl_g-GM7mSaZL7dydpjGi2QM46X05jt3E2ajzek3FHy71sv28yVspA/pub?embedded=true"></iframe> 
         </div>
       );
     }
@@ -229,7 +186,7 @@ class App extends Component {
     return (
       <div className={classes.App}>
         <hr className={classes.horizontal}/>
-        <h1>Graduate Direct Project II 02FA18</h1>
+        <h1>Graduate Direct Project II 02FA18 Workshop</h1> 
         <button>Edit</button>
         <hr className={classes.hrzl}/>
         <div className={classes.image}>
@@ -241,7 +198,12 @@ class App extends Component {
           <p className = {classes.header} onClick = {this.activeModuleState}>Module</p>
           <p className = {classes.header} onClick = {this.activeCalendarState}>Calendar</p>
         </div>
+        <div className = {classes.ModuleContainer} >
         {mainModuleContent}
+        { this.state.subModuleContent &&  <div className={classes.ModuleRight}>
+              {this.state.subModuleContent}
+            </div>}
+        </div>
         {mainAboutContent}
         {mainSyllabusContent}
         {mainCalendarContent}

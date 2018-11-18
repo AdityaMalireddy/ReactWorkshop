@@ -7,7 +7,7 @@ const InClassActivity = (props) => {
     let content = [];
 
     for(let i=1; i<=props.inClassActivity; i++) {
-        content.push(<div className={moduleCss.Module} key={i}>InClassActivity {i} </div>)
+        content.push(<div className={moduleCss.Module} key={i} onClick={()=>props.onClick(props.inClassActivity[i])}>InClassActivity {i} </div>)
     }
 
     return(

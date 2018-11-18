@@ -6,7 +6,7 @@ const Quiz = (props) => {
     return(
         <div>
             {props.quizes.map((key, index) => {
-                return <li className = {moduleCss.Module} key = {index}>Quiz {index+1}: {key}</li>
+                return <li className = {moduleCss.Module} onClick={()=>props.onClick(key)} key = {index}>Quiz {index+1}: {key}</li>
             })}
         </div>
     );
