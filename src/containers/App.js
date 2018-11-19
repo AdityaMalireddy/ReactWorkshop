@@ -48,7 +48,6 @@ class App extends Component {
   }
 
   subModuleFired = (moduleNo, type, details) =>{
-      console.log(moduleNo, type, details);
       if(moduleNo===1&&type==="Video"){
         this.setState({subModuleContent: 
           <React.Fragment>
@@ -91,7 +90,7 @@ class App extends Component {
         moduleContent: 
         
             <div className = {classes.Module}>
-              <h4 className = {classes.moduleIntro} > Module 0{moduleNo} -  <span>module 0{moduleNo} name</span></h4>
+              <h4 className = {classes.moduleIntro} > Module 0{moduleNo}</h4>
               <div>
                 <p className = {classes.moduleTutorial} onClick={()=>this.subModuleFired.bind(this, moduleNo, "Video")(`Module 0${moduleNo} Tutorial`)}>Module 0{moduleNo} Tutorial</p>
                 <Chapter module={moduleNo} onClick={this.subModuleFired.bind(this, moduleNo, "Chapter")} concept={concepts}/>
@@ -126,6 +125,7 @@ class App extends Component {
         calendarActive: doesAboutActive,
         subModuleContent: null
       })
+      this.state.moduleContent = null;
     }
   }
 
@@ -139,6 +139,7 @@ class App extends Component {
         calendarActive: doesSyllabusActive,
         subModuleContent: null
       })
+      this.state.moduleContent = null;
     } 
   }
 
@@ -152,6 +153,7 @@ class App extends Component {
         calendarActive: !doesCalendarActive,
         subModuleContent: null
       })
+      this.state.moduleContent = null;
     }
   }
 
