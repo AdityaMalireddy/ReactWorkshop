@@ -12,6 +12,7 @@
 
 .Course{
     display: inline-block;
+    height: auto;
 }
 
 .Course :hover {

@@ -4,7 +4,7 @@ import Course from '../components/Courses/Course';
 import Chapter from '../components/Module/Chapters';
 import Assignment from '../components/Module/Assignmnets';
 import Quiz from '../components/Module/Quizes';
-import InClassActivity from '../components/Module/InClassActivities';
+// import InClassActivity from '../components/Module/InClassActivities';
 
 class App extends Component {
 
@@ -49,15 +49,36 @@ class App extends Component {
 
   subModuleFired = (moduleNo, type, details) =>{
       console.log(moduleNo, type, details);
-      this.setState({subModuleContent: 
-                          <React.Fragment>
-                          <h1>{details}</h1>
-                          <div className={classes.Clear}></div>
-                          <div className={classes.Wrap}>
-                            {this.getContent(type, details)}
-                          </div>
-                          </React.Fragment>
-       });
+      if(moduleNo===1&&type==="Video"){
+        this.setState({subModuleContent: 
+          <React.Fragment>
+          <h1>{details}</h1>
+          <div className={classes.Clear}></div>
+          {/* <div className={classes.Wrap}>
+            {this.getContent(type, details)}
+          </div> */}
+          <iframe className={classes.IFrame} src="https://www.youtube.com/embed/Z9QbYZh1YXY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </React.Fragment>
+      });
+      }else if(moduleNo===2&&type==="Video"){
+        this.setState({subModuleContent: 
+          <React.Fragment>
+          <h1>{details}</h1>
+          <div className={classes.Clear}></div>
+          <iframe className={classes.IFrame} src="https://www.youtube.com/embed/9aVJOg2EB9I" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </React.Fragment>
+      });
+      }else{
+        this.setState({subModuleContent: 
+          <React.Fragment>
+          <h1>{details}</h1>
+          <div className={classes.Clear}></div>
+          <div className={classes.Wrap}>
+            {this.getContent(type, details)}
+          </div>
+          </React.Fragment>
+      });
+      }
   }
 
   moduledFired = (moduleNo) => {
@@ -72,7 +93,7 @@ class App extends Component {
             <div className = {classes.Module}>
               <h4 className = {classes.moduleIntro} > Module 0{moduleNo} -  <span>module 0{moduleNo} name</span></h4>
               <div>
-                <p className = {classes.moduleTutorial} onClick={()=>this.subModuleFired.bind(this, moduleNo, "Chapter")(`Module 0${moduleNo} Tutorial`)}>Module 0{moduleNo} Tutorial</p>
+                <p className = {classes.moduleTutorial} onClick={()=>this.subModuleFired.bind(this, moduleNo, "Video")(`Module 0${moduleNo} Tutorial`)}>Module 0{moduleNo} Tutorial</p>
                 <Chapter module={moduleNo} onClick={this.subModuleFired.bind(this, moduleNo, "Chapter")} concept={concepts}/>
                 {quizes.length > 0 && <Quiz quizes={quizes} onClick={this.subModuleFired.bind(this, moduleNo, "Quiz")}/> }
                 <Assignment assignments={assignments} onClick={this.subModuleFired.bind(this, moduleNo, "Assignment")}/>
@@ -89,7 +110,8 @@ class App extends Component {
         moduleActive: !doesModuleActive,
         aboutActive: doesModuleActive,
         syllabusActive: doesModuleActive,
-        calendarActive: doesModuleActive
+        calendarActive: doesModuleActive,
+          subModuleContent: null
       })
     }
   }
@@ -101,7 +123,8 @@ class App extends Component {
         moduleActive: doesAboutActive,
         aboutActive: !doesAboutActive,
         syllabusActive: doesAboutActive,
-        calendarActive: doesAboutActive
+        calendarActive: doesAboutActive,
+        subModuleContent: null
       })
     }
   }
@@ -113,7 +136,8 @@ class App extends Component {
         moduleActive: doesSyllabusActive,
         aboutActive: doesSyllabusActive,
         syllabusActive: !doesSyllabusActive,
-        calendarActive: doesSyllabusActive
+        calendarActive: doesSyllabusActive,
+        subModuleContent: null
       })
     } 
   }
@@ -125,7 +149,8 @@ class App extends Component {
         moduleActive: doesCalendarActive,
         aboutActive: doesCalendarActive,
         syllabusActive: doesCalendarActive,
-        calendarActive: !doesCalendarActive
+        calendarActive: !doesCalendarActive,
+        subModuleContent: null
       })
     }
   }
@@ -156,7 +181,47 @@ class App extends Component {
     if(this.state.aboutActive){
       mainAboutContent = (
         <div className = {classes.About}>
-          About course goes here
+          <ul>
+            <li><strong>Instructor</strong>: Aziz Fellah</li>
+            <li><strong>Office hours</strong>: By appointment or</li>
+            </ul>
+            <table border="1" className={classes.Table}>
+            <thead>
+              <tr>
+                <th>Weekday</th>
+                <th>Office hours</th>
+              </tr>
+            </thead>
+            <tbody>
+            <tr>
+            <td><span>Monday</span></td>
+            <td>
+            <p><span>10:00 AM - 12:00 PM</span></p>
+            </td>
+            </tr>
+            <tr>
+            <td>Wednesday</td>
+            <td>
+            <p><span>10:00 AM - 12:00 PM</span></p>
+            </td>
+            </tr>
+            <tr>
+            <td>Friday</td>
+            <td>
+            <p><span>10:00 AM - 12:00 PM</span></p>
+            <p><span> 03:00 PM - 04:00 PM</span></p>
+            </td>
+            </tr>
+            </tbody>
+            </table>
+            <ul>
+            <li><strong>Email</strong>: <a href="mailto:afellah@nwmissouri.edu">afellah@nwmissouri.edu</a></li>
+            <li><strong>Office:&nbsp;</strong>Colden Hall 2290&nbsp;</li>
+            <li><strong>Tel:&nbsp;</strong> (660) 562-0803</li>
+            <li><strong>Teaching Assistant</strong>: Raja Srikar Karthik Chinta</li>
+            <li><strong>Email:<span>&nbsp;</span></strong><a href="mailto:S530460@nwmissouri.edu">S530460@nwmissouri.edu</a></li>
+            <li><a title="Syllabus" href="https://nwmissouri.instructure.com/courses/17476/assignments/syllabus"><strong>Syllabus</strong></a></li>
+            </ul>
         </div>
       )
     }
@@ -178,7 +243,7 @@ class App extends Component {
     if(this.state.calendarActive){
       mainCalendarContent = (
         <div className ={classes.About}>
-          Calendar page goes here
+          <iframe className={classes.Calender} src="https://calendar.google.com/calendar/embed?src=ipofei7stq6gmotgv8nq73iv3puqkim4%40import.calendar.google.com&ctz=America%2FChicago" frameborder="0" scrolling="no"></iframe>
         </div>
       );
     }
@@ -193,10 +258,10 @@ class App extends Component {
           <img src="https://s3-us-west-2.amazonaws.com/asset.plexuss.com/college/overview_images/2207_northwest_missouri_state_university03.jpg" alt="Northwest Icon"/>
         </div>
         <div className={classes.headerMain}>
-          <p className = {classes.header} onClick = {this.activeAboutState}>About the Course</p>
-          <p className = {classes.header} onClick = {this.activeSyllabusState}>Syllabus</p>
-          <p className = {classes.header} onClick = {this.activeModuleState}>Module</p>
-          <p className = {classes.header} onClick = {this.activeCalendarState}>Calendar</p>
+          <p className = {classes.header} onClick = {this.activeAboutState}><i className="fas fa-info-circle" color="white"></i>&nbsp;About the Course</p>
+          <p className = {classes.header} onClick = {this.activeSyllabusState}><i className="fas fa-book" color="white"></i>&nbsp;Syllabus</p>
+          <p className = {classes.header} onClick = {this.activeModuleState}><i className="fas fa-box" color="white"></i>&nbsp;Module</p>
+          <p className = {classes.header} onClick = {this.activeCalendarState}><i className="far fa-calendar-alt" color="white"></i>&nbsp;Calendar</p>
         </div>
         <div className = {classes.ModuleContainer} >
         {mainModuleContent}
